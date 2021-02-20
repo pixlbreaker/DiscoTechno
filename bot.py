@@ -1,6 +1,7 @@
 import discord
 import os
 import json
+import keep_alive
 
 from discord.ext import commands
 
@@ -24,6 +25,8 @@ async def unload(ctx, extension):
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
+
+keep_alive.keep_alive()
 
 # Run the bot
 bot.run(TOKEN)
